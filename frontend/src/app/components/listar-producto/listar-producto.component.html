@@ -1,0 +1,38 @@
+<div class="mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">LISTADO DE PRODUCTOS</span>
+                    <button class="btn btn-secondary float-start" routerLink="/">VOLVER</button>
+                    <button class="btn btn-primary float-end" routerLink="/crear-producto">NUEVO</button>
+                    <div class="table-responsive">
+                        <table *ngIf="listProductos.length > 0" class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th>PRODUCTO</th>
+                                    <th>CANTIDAD</th>
+                                    <th>CATEGORÍA</th>
+                                    <th>PRECIO</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let producto of listProductos">
+                                    <td>{{ producto.servicio }}</td>
+                                    <td>{{ producto.cantidad }}</td>
+                                    <td>{{ producto.concepto }}</td>
+                                    <td>{{ producto.centro_costos | currency: 'USD'}}</td>
+                                    <td><i [routerLink]="['/editar-producto', producto._id]" class="fa-solid fa-pen-to-square text-primary"></i>
+                                        <i (click)="eliminarProducto(producto._id)" class="fa-solid fa-trash text-danger"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h5 *ngIf="listProductos.length == 0">NO HAY PRODUCTOS PARA MOSTRAR</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

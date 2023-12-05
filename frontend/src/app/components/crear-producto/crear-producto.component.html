@@ -1,0 +1,52 @@
+<div class="volver">
+    <button routerLink="/" class="btn btn-secondary btn-lg">VOLVER</button>
+</div>
+<div class="container mb-5 mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">{{ titulo | uppercase }}</span>
+                    <form class="mt-3" [formGroup]="productoForm" (ngSubmit)="agregarProducto()">
+                        <div class="mb-3">
+                            <label for="servicio">Nombre del Producto:</label>
+                            <input type="text" formControlName="servicio" class="form-control">
+                            <div class="text-danger"
+                                *ngIf="productoForm.get('servicio')?.hasError('required') && productoForm.get('servicio')?.touched">
+                                <span>¡El nombre del producto <strong>es obligatorio!</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cantidad">Cantidad del Producto:</label>
+                            <input type="number" formControlName="cantidad" class="form-control">
+                            <div class="text-danger"
+                                *ngIf="productoForm.get('cantidad')?.hasError('required') && productoForm.get('cantidad')?.touched">
+                                <span>¡La cantidad de productos <strong>es obligatoria!</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="concepto">Categoría del Producto:</label>
+                            <input type="text" formControlName="concepto" class="form-control">
+                            <div class="text-danger"
+                                *ngIf="productoForm.get('concepto')?.hasError('required') && productoForm.get('concepto')?.touched">
+                                <span>¡La categoría del producto <strong>es obligatoria!</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="centro_costos">Precio del Producto:</label>
+                            <input type="number" formControlName="centro_costos" class="form-control">
+                            <div class="text-danger"
+                                *ngIf="productoForm.get('centro_costos')?.hasError('required') && productoForm.get('centro_costos')?.touched">
+                                <span>¡El precio del producto <strong>es obligatorio!</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button routerLink="/listar-producto" class="btn btn-secondary btn-lg float-start mt-2">VOLVER</button>
+                            <button type="submit" [disabled]="productoForm.invalid" class="btn btn-primary btn-lg float-end mt-2">ACEPTAR</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
